@@ -1,4 +1,8 @@
+import 'dart:developer';
+
 import 'package:camera/camera.dart';
+import 'package:example3d/quick_time_event_game_2.dart';
+import 'package:example3d/quick_time_event_game_3.dart';
 import 'package:flutter/material.dart';
 import 'package:o3d/o3d.dart';
 
@@ -17,22 +21,32 @@ class MyApp extends StatefulWidget {
   State<MyApp> createState() => _MyAppState();
 }
 
-class _MyAppState extends State<MyApp> {
+class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
   late CameraController cameraController;
   O3DController o3dController = O3DController();
+  late AnimationController animationController;
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
 
+    cookingSliderSetup();
     cameraSetup();
   }
 
   @override
   void dispose() {
-    cameraController.dispose();
     super.dispose();
+    cameraController.dispose();
+    animationController.dispose();
+  }
+
+  void cookingSliderSetup() {
+    animationController = AnimationController(
+      vsync: this,
+      duration: Duration(seconds: 2),
+    )..repeat(reverse: true);
   }
 
   void cameraSetup() {
@@ -80,6 +94,7 @@ class _MyAppState extends State<MyApp> {
               cameraTarget: CameraTarget(-2, 4, -1.5),
               cameraOrbit: CameraOrbit(100, 90, 0),
             ),
+            QuickTimeEventGame3(),
           ],
         ),
       ),
