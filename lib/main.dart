@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:camera/camera.dart';
+import 'package:example3d/pixel_button.dart';
 import 'package:example3d/quick_time_event_game_2.dart';
 import 'package:example3d/quick_time_event_game_3.dart';
 import 'package:flutter/material.dart';
@@ -94,7 +95,22 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
               cameraTarget: CameraTarget(-2, 4, -1.5),
               cameraOrbit: CameraOrbit(100, 90, 0),
             ),
-            QuickTimeEventGame3(),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  QuickTimeEventGame2(),
+                  const SizedBox(height: 24),
+                  const SizedBox(
+                    height: 56,
+                    width: double.infinity,
+                    child: PixelButton(),
+                  ),
+                  const SizedBox(height: 24),
+                ],
+              ),
+            ),
           ],
         ),
       ),
