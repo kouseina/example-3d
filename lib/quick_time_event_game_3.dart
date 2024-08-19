@@ -60,6 +60,7 @@ class _QuickTimeEventGame3State extends State<QuickTimeEventGame3> {
         onClick: () {
           Navigator.of(keyLoader.currentContext!, rootNavigator: true).pop();
           startMoving();
+          listenToGyroscope();
         },
         isSuccess: true,
       );
@@ -70,6 +71,7 @@ class _QuickTimeEventGame3State extends State<QuickTimeEventGame3> {
         onClick: () {
           Navigator.of(keyLoader.currentContext!, rootNavigator: true).pop();
           startMoving();
+          listenToGyroscope();
         },
         isSuccess: false,
       );
